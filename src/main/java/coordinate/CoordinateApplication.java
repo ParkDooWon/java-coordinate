@@ -1,5 +1,6 @@
 package coordinate;
 
+import coordinate.domain.figure.Figure;
 import coordinate.domain.figure.FigureFactory;
 import coordinate.domain.Point;
 import coordinate.utils.PointParser;
@@ -11,6 +12,7 @@ public class CoordinateApplication {
     public static void main(String[] args) {
         String value = InputView.getPoint();
         List<Point> points = PointParser.parse(value);
-        FigureFactory.getFigure(points);
+        Figure result = FigureFactory.getFigure(points);
+        System.out.println(result.getName());
     }
 }
