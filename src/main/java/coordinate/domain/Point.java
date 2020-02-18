@@ -1,14 +1,22 @@
 package coordinate.domain;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Point {
     private final Dot x;
     private final Dot y;
+    private static final Map<Integer, Dot> dots = new HashMap<>();
+    static {
+        for (int i = 1; i <= 24; i++) {
+            dots.put(i, new Dot(i));
+        }
+    }
 
     private Point(int x, int y) {
-        this.x = new Dot(x);
-        this.y = new Dot(y);
+        this.x = dots.get(x);
+        this.y = dots.get(y);
     }
 
     public double getDistance(Point other) {
