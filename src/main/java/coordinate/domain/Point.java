@@ -1,5 +1,7 @@
 package coordinate.domain;
 
+import coordinate.utils.InvalidPositionException;
+
 import java.util.Objects;
 
 public class Point {
@@ -9,12 +11,12 @@ public class Point {
     private Point(int x, int y) {
         this.x = x;
         if (x < 0 || x > 24) {
-            throw new IllegalArgumentException();
+            throw new InvalidPositionException("유효하지않은 범위입니다.");
         }
 
         this.y = y;
         if (y < 0 || y > 24) {
-            throw new IllegalArgumentException();
+            throw new InvalidPositionException("유효하지않은 범위입니다.");
         }
     }
 
