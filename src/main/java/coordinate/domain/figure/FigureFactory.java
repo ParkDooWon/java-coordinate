@@ -8,13 +8,13 @@ import java.util.List;
 
 public class FigureFactory {
 
-    public static Figure getFigure(List<Point> points) {
+    public static Figure getFigure(List<Point> points) throws InvalidFigureException {
         FigureBox figureBox = find(points);
         FigureCreator figureCreator = figureBox.createCreator();
         return figureCreator.create(points);
     }
 
-    private static FigureBox find(List<Point> points){
+    private static FigureBox find(List<Point> points) throws InvalidFigureException {
         return Arrays.stream(FigureBox.values())
                 .filter(f -> f.size() == points.size())
                 .findFirst()
