@@ -1,6 +1,7 @@
 package coordinate.domain.figure;
 
 import coordinate.domain.Point;
+import coordinate.utils.InvalidFigureException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +18,7 @@ public class FigureFactory {
         return Arrays.stream(FigureBox.values())
                 .filter(f -> f.size() == points.size())
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("유효하지 않은 도형입니다."));
+                .orElseThrow(() -> new InvalidFigureException("유효하지 않은 도형입니다."));
     }
 }
 
