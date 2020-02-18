@@ -10,8 +10,7 @@ public class FigureFactory {
 
     public static Figure getFigure(List<Point> points) throws InvalidFigureException {
         FigureBox figureBox = find(points);
-        FigureCreator figureCreator = figureBox.createCreator();
-        return figureCreator.create(points);
+        return figureBox.create(points);
     }
 
     private static FigureBox find(List<Point> points) throws InvalidFigureException {

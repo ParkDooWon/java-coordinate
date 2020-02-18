@@ -1,5 +1,8 @@
 package coordinate.domain.figure;
 
+import java.util.List;
+import coordinate.domain.Point;
+
 public enum FigureBox {
     LINE {
         @Override
@@ -8,8 +11,8 @@ public enum FigureBox {
         }
 
         @Override
-        FigureCreator createCreator(){
-            return FigureCreator.LINE_CREATOR;
+        Figure create(List< Point > points) {
+            return new Line(points);
         }
 
     },
@@ -20,8 +23,8 @@ public enum FigureBox {
         }
 
         @Override
-        FigureCreator createCreator(){
-            return FigureCreator.TRIANGLE_CREATOR;
+        Figure create(List<Point> points) {
+            return new Triangle(points);
         }
 
     },
@@ -32,14 +35,13 @@ public enum FigureBox {
         }
 
         @Override
-        FigureCreator createCreator(){
-            return FigureCreator.RECTANGLE_CREATOR;
+        Figure create(List<Point> points) {
+            return new Rectangle(points);
         }
 
     };
 
     abstract int size();
 
-    abstract FigureCreator createCreator();
-
+    abstract Figure create(List<Point> points);
 }
