@@ -1,21 +1,22 @@
 package coordinate.domain;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Point {
-    private final int x;
-    private final int y;
+    private final Dot x;
+    private final Dot y;
+    private static final Map<Integer, Dot> dots = new HashMap<>();
+    static {
+        for (int i = 1; i <= 24; i++) {
+            dots.put(i, new Dot(i));
+        }
+    }
 
     private Point(int x, int y) {
-        this.x = x;
-        if (x < 0 || x > 24) {
-            throw new IllegalArgumentException();
-        }
-
-        this.y = y;
-        if (y < 0 || y > 24) {
-            throw new IllegalArgumentException();
-        }
+        this.x = dots.get(x);
+        this.y = dots.get(y);
     }
 
     public double getDistance(Point other) {
@@ -24,12 +25,12 @@ public class Point {
         return Math.sqrt(square(xDifference) + square(yDifference));
     }
 
-    private int minusX(int number) {
-        return this.x - number;
+    private int minusX(Dot number) {
+        return this.x.getDot() - number.getDot();
     }
 
-    private int minusY(int number) {
-        return this.y - number;
+    private int minusY(Dot number) {
+        return this.y.getDot() - number.getDot();
     }
 
     private static int square(int number) {
